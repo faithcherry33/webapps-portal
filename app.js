@@ -428,6 +428,18 @@ async function handleAdminLogin(event) {
   event.preventDefault();
   const code = els.adminCodeInput.value.trim();
   if (!code) return;
+
+  const submitButton = els.adminLoginForm.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = '확인 중…';
+
+  try {
+    const response = await fetch('/api/verify-admin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code })
+    });
+    const data = await response.json();
     if (!response.ok || !data.ok) throw new Error(data.message || '인증 실패');
     state.adminCode = code;
     sessionStorage.setItem(SESSION_ADMIN_KEY, code);
