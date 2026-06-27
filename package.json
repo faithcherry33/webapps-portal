@@ -1,0 +1,10 @@
+{
+  "name": "learning-portal-webapp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vercel-ready learning web app portal with category, tag, admin add form, and optional Firebase persistence.",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "firebase-admin": "^13.0.0"
+  }
+}
